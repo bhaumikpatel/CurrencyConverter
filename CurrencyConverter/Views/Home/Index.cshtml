@@ -1,0 +1,92 @@
+﻿@section pageHeader {
+    <div class="page-header">
+        <h1>
+            Currency Converter <small>Calculate live currency with google and yahoo free currency
+                converter.</small>
+        </h1>
+    </div>
+}
+@section span17 {
+    <div class="span17">
+        <form id="curForm">
+        @model CurrencyConverter.Models.Converter
+        @Html.ValidationSummary(true)
+        <span>
+            @Html.TextBoxFor(model => model.amount, new { style = "width: 110px;", @Value = "1" })</span>
+        <span>
+            @Html.DropDownListFor(model => model.FromValue, new SelectList(ViewBag.From, "Value", "Text"))
+        </span><span><a id="swap" class="btn btn-info btn-mini"><></a> </span><span>
+            @Html.DropDownListFor(model => model.ToValue, new SelectList(ViewBag.To, "Value", "Text"))</span>
+        <span>
+            <button class="ui-button-primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                role="button" aria-disabled="false" id="submit">
+                <span class="ui-button-text">Convert</span></button></span>
+        @Html.ValidationMessageFor(model => model.amount)
+        </form>
+        <noscript>
+            <div class="ui-widget">
+                <div class="ui-state-error ui-corner-all">
+                    <p>
+                        <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+                        <strong>Alert:</strong>Sorry you have problem with jquery.</p>
+                </div>
+            </div>
+        </noscript>
+    </div>
+}
+<div style="clear: both; padding-top: 20px;">
+</div>
+<div class="span11">
+    <div class="well">
+        <b>Convert Result</b>
+        <hr />
+        <div id="results">
+            <span class="igoogle">Google <span id="gresult"><b class="valgoogle"></b></span>
+            </span>
+            <div style="clear: both;">
+                &nbsp;
+            </div>
+            <span class="iyahoo">Yahoo <b class="valyahoo"></b></span>
+        </div>
+    </div>
+    <div class="ui-widget" id="error" style="display: none;">
+        <div class="ui-state-error ui-corner-all">
+            <p>
+                <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+                <strong>Error: </strong><span id="errorResults">aaaaa</span></p>
+        </div>
+    </div>
+</div>
+<div class="span5">
+    <div class="well">
+        <b>Top Convert</b>
+        <hr />
+        <ul>
+            <li><a class="topconvert" from="USD" to="EUR" title="United States (USD) To Euroland (EUR)">
+                USD To EUR</a></li>
+            <li><a class="topconvert" from="USD" to="INR" title="United States (USD) To India (INR)">
+                USD To INR</a></li>
+            <li><a class="topconvert" from="USD" to="AUD" title="United States (USD) To Australia (AUD)">
+                USD To AUD</a></li>
+            <li><a class="topconvert" from="USD" to="CAD" title="United States (USD) To Canada (CAD)">
+                USD To CAD</a></li>
+            <li><a class="topconvert" from="USD" to="CHF" title="United States (USD) To Switzerland (CHF)">
+                USD To CHF</a></li>
+            <li><a class="topconvert" from="USD" to="CNY" title="United States (USD) To China (CNY)">
+                USD To CNY</a></li>
+            <li><a class="topconvert" from="USD" to="JPY" title="United States (USD) To Japan (JPY)">
+                USD To JPY</a></li>
+            <li><a class="topconvert" from="USD" to="GBP" title="United States (USD) To Great-Britain (GBP)">
+                USD To GBP</a></li>
+            <li><a class="topconvert" from="USD" to="MXN" title="United States (USD) To Mexico (MXN)">
+                USD To MXN</a></li>
+            <li><a class="topconvert" from="USD" to="NZD" title="United States (USD) To New-Zealand (NZD)">
+                USD To NZD</a></li>
+            <li><a class="topconvert" from="USD" to="SEK" title="United States (USD) To Sweden (SEK)">
+                USD To SEK</a></li>
+        </ul>
+    </div>
+</div>
+@section scripts {
+    <script src="~/Scripts/convert.js" type="text/javascript"></script>
+}
